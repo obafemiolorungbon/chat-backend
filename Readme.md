@@ -1,23 +1,23 @@
+# express powered room simulation
 
-# express-backend-template
+# Installation
 
-Express powered minimal backend template  to ease development setup
+All you need to do is run `yarn install` to install all packages and then `yarn start dev` to start the development server powered by express and hot-reloaded by nodemon
 
-## Installation
+## Combining with a client
 
-For now, it is only only available on this repo. So, you can clone it and use as starting point for your express backend projects
+This mainly just receives request from a client/clients and publish the mesages to centrifugo server. Idealy, there are two other components of this, the centrifugo server and also the client, which is react. You can check this repo, there should be a client and centrifugo server file for windows users
 
-## Usage
+## Motivation
 
-Setting up express projects always involves redundant code that needs to be repeated over and over again for each project. Gets tiring, if you ask me. Life does not have to be that hard and saving time is a developer's skill. So, jump over the folder creation, boilerplate imports and get to work ASAP.
+Never understood how Zuri chat worked as a unit, decided to understand it by building a simple concept.
 
-BONUS:
+## Improving
 
-- Comes with winston for better developer logging (console.log does not cut it for production).
-- comes with jest set up for tests. You can easily change to your favourite testing framework like mocha in two steps.
-- Comes with Github Actions with cache enabled.
-
-I will update this repo regularly to include best practices of Node Js development practices. Also, I'm working to make it available via npx ASAP. Thank you.
+- integrate database
+- proper auth
+- error handlers
+  And overall code quality, this was just a basic idea built to test knowledge, so a lot of improvement areas
 
 ## Contributing
 
