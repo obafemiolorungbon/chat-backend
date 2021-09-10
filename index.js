@@ -1,25 +1,20 @@
 //Main entry point//
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express");
-const winston = require("winston")// a better way to log your errors
-const path = require("path");
-const cookieParser = require("cookie-parser")
+const winston = require("winston"); // a better way to log your errors
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const fs = require("fs");
-
-
+const { auth, refresh, api } = require("./routes/index");
 const app = express();
+app.use(cors());
 
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.FRONTEND_LINK || "localhost:3000",
-  })
-);
-
+// createToken(claims, centriInfo.token);
 //configures winston to log your errors to file named error.log
-winston.add(new winston.transports.File({filename:"errors.log"}))
-app.use(cookieParser())
-app.use(express.urlencoded({extended:false}))
-
-module.exports = app
+winston.add(new winston.transports.File({ filename: "errors.log" }));
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use("/client", api);
+app.use("/centrifuge", refresh);
+app.use("/auth", auth);
+module.exports = app;
